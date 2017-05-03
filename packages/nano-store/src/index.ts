@@ -9,7 +9,9 @@ class NanoStore implements Store {
 
   constructor(private readonly seedData?: User[]) {
     if (seedData) {
-      this.data = cloneDeep(seedData);
+      this.reset();
+    } else {
+      this.data = [];
     }
   };
 

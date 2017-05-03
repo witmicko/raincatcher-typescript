@@ -9,7 +9,11 @@ import NanoStore from '../src/index';
 describe('Store', function() {
   let store: Store;
   beforeEach(function(){
-    store = new NanoStore();
+    store = new NanoStore([{
+      id: 'susy',
+      name: 'susy',
+      address: 'somewhere'
+    }]);
     store.reset();
   });
 

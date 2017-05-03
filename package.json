@@ -1,0 +1,16 @@
+{
+  "name": "raincatcher-typescript",
+  "version": "1.0.0",
+  "description": "Simple demo for new raincatcher architecture using typescript and DI",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feedhenry-raincatcher/raincatcher-typescript.git"
+  },
+  "author": "",
+  "license": "Apache",
+  "bugs": {
+    "url": "https://github.com/feedhenry-raincatcher/raincatcher-typescript/issues"
+  },
+  "homepage": "https://github.com/feedhenry-raincatcher/raincatcher-typescript#readme"
+}

@@ -1,5 +1,5 @@
 {
-  "name": "raincatcher-tutorial-cloud",
+  "name": "@raincatcher/tutorial-cloud",
   "version": "0.0.1",
   "description": "A Cloud App to demonstrate bridging between client and cloud for the Raincatcher user module",
   "main": "index.js",
@@ -13,7 +13,7 @@
     "cors": "2.7.1",
     "express": "^4.14.0",
     "moment": "^2.15.1",
-    "raincatcher-tutorial-module": "0.0.1"
+    "@raincatcher/tutorial-module": "0.0.1"
   },
   "devDependencies": {
     "grunt": "^1.0.1",

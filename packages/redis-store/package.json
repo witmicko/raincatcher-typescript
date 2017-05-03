@@ -1,5 +1,5 @@
 {
-  "name": "nano-redis-store",
+  "name": "@external/nano-redis-store",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@types/redis": "^0.12.36",
-    "nano-store": "1.0.0"
+    "@raincatcher/nano-store": "1.0.0"
   },
   "scripts": {
     "test": "node test.js"

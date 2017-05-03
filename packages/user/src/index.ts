@@ -1,5 +1,5 @@
 import * as express from 'express';
-import Store from '@raincatcher/nano-store/types/Store';
+import Store from '@raincatcher/store/types/Store';
 import { EventEmitter } from 'events';
 import RouterEvents from './RouterEvents'
 import EventedRouter from './EventedRouter';

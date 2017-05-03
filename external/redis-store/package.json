@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@types/redis": "^0.12.36",
-    "@raincatcher/nano-store": "1.0.0"
+    "@raincatcher/store": "1.0.0"
   },
   "scripts": {
     "test": "node test.js"

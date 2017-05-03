@@ -1,5 +1,5 @@
-import Store from 'nano-store/types/Store';
-import User from 'nano-store/types/User';
+import Store from 'store/types/Store';
+import User from 'store/types/User';
 import * as redis from 'redis';
 import * as Promise from 'bluebird';
 

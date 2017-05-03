@@ -1,4 +1,4 @@
-import User from '@raincatcher/nano-store/types/User';
+import User from '@raincatcher/store/types/User';
 import { EventEmitter } from "events";
 
 /**

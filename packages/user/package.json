@@ -8,7 +8,7 @@
   "dependencies": {
     "express": "^4.14.0",
     "request": "^2.75.0",
-    "@raincatcher/nano-store": "1.0.0"
+    "@raincatcher/store": "1.0.0"
   },
   "scripts": {
     "prepublish": "tsc && cp src/*.d.ts types/"

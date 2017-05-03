@@ -4,7 +4,7 @@ import { cloneDeep } from 'lodash';
 import Store from './Store';
 import User from "./User";
 
-class NanoStore implements Store {
+class StoreImpl implements Store {
   private data: User[];
 
   constructor(private readonly seedData?: User[]) {
@@ -30,4 +30,4 @@ class NanoStore implements Store {
   }
 }
 
-export default NanoStore;
+export default StoreImpl;

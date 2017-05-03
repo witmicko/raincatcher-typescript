@@ -12,5 +12,8 @@
   "bugs": {
     "url": "https://github.com/feedhenry-raincatcher/raincatcher-typescript/issues"
   },
-  "homepage": "https://github.com/feedhenry-raincatcher/raincatcher-typescript#readme"
+  "homepage": "https://github.com/feedhenry-raincatcher/raincatcher-typescript#readme",
+  "devDependencies": {
+    "lerna": "^2.0.0-rc.4"
+  }
 }

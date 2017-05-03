@@ -1,18 +1,17 @@
 import * as Promise from 'bluebird';
-import User from './User';
-interface Store {
+interface Store<T> {
   /**
    * Returns a list of all members of the store's data
    */
-  list(): Promise<User[]>;
+  list(): Promise<T[]>;
   /**
    * Adds a new user to the store's data
    * @param user User to add
    */
-  add(user: User): Promise<User>;
+  add(user: T): Promise<T>;
   /**
    * Reset's the store's data
    */
-  reset(): Promise<User[]>
+  reset(): Promise<T[]>
 }
 export default Store;

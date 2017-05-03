@@ -1,10 +1,11 @@
 import * as express from 'express';
 import Store from '@raincatcher/store/types/Store';
+import User from './User';
 import { EventEmitter } from 'events';
 import RouterEvents from './RouterEvents'
 import EventedRouter from './EventedRouter';
 
-export default function initializeRouter(Store: Store) {
+export default function initializeRouter(Store: Store<User>) {
   const router = express.Router() as EventedRouter;
   router.events = new EventEmitter() as RouterEvents;
 

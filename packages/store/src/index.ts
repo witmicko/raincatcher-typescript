@@ -2,12 +2,11 @@ import * as Promise from 'bluebird';
 import { cloneDeep } from 'lodash';
 
 import Store from './Store';
-import User from "./User";
 
-class StoreImpl implements Store {
-  private data: User[];
+class StoreImpl<T> implements Store<T> {
+  private data: T[];
 
-  constructor(private readonly seedData?: User[]) {
+  constructor(private readonly seedData?: T[]) {
     if (seedData) {
       this.reset();
     } else {
@@ -19,7 +18,7 @@ class StoreImpl implements Store {
     return Promise.resolve(this.data);
   };
 
-  add(user: User) {
+  add(user: T) {
     this.data.push(user);
     return Promise.resolve(user);
   };

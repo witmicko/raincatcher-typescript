@@ -10,7 +10,7 @@ app.use(cors());
 //Using a body parser for JSON requests.
 app.use(bodyParser.json());
 
-var router = require('raincatcher-tutorial-module').setUpEventRouter();
+var router = require('@raincatcher/user').setUpEventRouter();
 //Mounting the tutorial module on the base route for the ExpressJS application
 app.use('/', router);
 

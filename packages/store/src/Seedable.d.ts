@@ -1,6 +1,5 @@
 import Store from './Store';
-import User from './User';
-interface Seedable {
-  new(seedData: User[]): Store;
+interface Seedable<T> {
+  new(seedData: T[]): Store<T>;
 }
 export default Seedable;

@@ -21,7 +21,7 @@ userRouter.events.on('list', function() {
   });
 });
 
-userRouter.events.on('create', function(createdUser: User) {
+userRouter.events.on('create', function(createdUser) {
   console.log({
     topic: 'create',
     time: moment(new Date()).toString(),

@@ -1,0 +1,22 @@
+{
+  "name": "@raincatcher/message",
+  "version": "0.0.1",
+  "author": "",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "dependencies": {
+    "express": "^4.14.0",
+    "request": "^2.75.0",
+    "@raincatcher/store": "1.0.0"
+  },
+  "scripts": {
+    "prepublish": "del lib types && tsc"
+  },
+  "devDependencies": {
+    "@types/express": "^4.0.35",
+    "@types/node": "^7.0.14",
+    "del-cli": "^0.2.1",
+    "typescript": "^2.3.2"
+  }
+}

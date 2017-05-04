@@ -1,4 +1,4 @@
-import User from '@raincatcher/store/types/User';
+import User from './User';
 import { EventEmitter } from "events";
 
 /**

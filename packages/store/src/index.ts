@@ -1,9 +1,9 @@
 import * as Promise from 'bluebird';
 import { cloneDeep } from 'lodash';
 
-import Store from './Store';
+import Store, { HasId } from './Store';
 
-class StoreImpl<T> implements Store<T> {
+class StoreImpl<T extends HasId> implements Store<T> {
   private data: T[];
 
   constructor(private readonly seedData?: T[]) {

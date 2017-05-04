@@ -1,5 +1,10 @@
 import * as Promise from 'bluebird';
-interface Store<T> {
+
+export interface HasId {
+  id: string
+}
+
+interface Store<T extends HasId> {
   /**
    * Returns a list of all members of the store's data
    */

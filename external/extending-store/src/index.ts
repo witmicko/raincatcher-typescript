@@ -1,5 +1,4 @@
 import * as Promise from 'bluebird';
-import { cloneDeep } from 'lodash';
 import RaincatcherStore, { HasId } from '@raincatcher/store';
 const sayHello = ((from: string) => console.log(`Hello from extending store's ${from}!`));
 

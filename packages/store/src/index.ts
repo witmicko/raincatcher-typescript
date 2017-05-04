@@ -1,7 +1,32 @@
 import * as Promise from 'bluebird';
 import { cloneDeep } from 'lodash';
 
-import Store, { HasId } from './Store';
+/**
+ * Extra optional interface to enforce constructor signature
+ */
+export interface Seedable<T extends HasId> {
+  new(seedData: T[]): Store<T>;
+}
+
+export interface HasId {
+  id: string
+}
+
+export interface Store<T extends HasId> {
+  /**
+   * Returns a list of all members of the store's data
+   */
+  list(): Promise<T[]>;
+  /**
+   * Adds a new user to the store's data
+   * @param user User to add
+   */
+  add(user: T): Promise<T>;
+  /**
+   * Reset's the store's data
+   */
+  reset(): Promise<T[]>
+}
 
 class StoreImpl<T extends HasId> implements Store<T> {
   private data: T[];

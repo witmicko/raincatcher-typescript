@@ -6,7 +6,8 @@
         "declaration": true,
         "declarationDir": "./types",
         "sourceMap": false,
-        "outDir": "lib/"
+        "outDir": "lib/",
+        "experimentalDecorators": true
     },
     "include": [
         "src/"

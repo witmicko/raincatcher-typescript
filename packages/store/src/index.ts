@@ -29,9 +29,9 @@ export interface Store<T extends HasId> {
 }
 
 class StoreImpl<T extends HasId> implements Store<T> {
-  private data: T[];
+  protected data: T[];
 
-  constructor(private readonly seedData?: T[]) {
+  constructor(protected readonly seedData?: T[]) {
     if (seedData) {
       this.reset();
     } else {

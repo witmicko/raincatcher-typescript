@@ -11,7 +11,7 @@
     "lodash": "^4.17.4"
   },
   "scripts": {
-    "prepublish": "del lib types && tsc && cp src/*.d.ts types/",
+    "prepublish": "del lib types && tsc",
     "test": "mocha"
   },
   "devDependencies": {

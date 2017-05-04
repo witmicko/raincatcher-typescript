@@ -1,9 +1,34 @@
 import * as express from 'express';
-import Store from '@raincatcher/store/types/Store';
-import User from './User';
+import { Store } from '@raincatcher/store';
 import { EventEmitter } from 'events';
-import RouterEvents from './RouterEvents'
-import EventedRouter from './EventedRouter';
+
+export interface User {
+	id : string;
+	name : string;
+	address : string;
+}
+
+/**
+ * Events emmited by the router as stuff happens
+ */
+export interface RouterEvents extends EventEmitter {
+  /**
+   * List endpoint has been hit
+   * @param listOfUsers The list of users
+   */
+  on(event: 'list', handler: (listOfUsers: [User]) => any) : this
+  
+  /**
+   * Create endpoint has been hit
+   * @param createdUser The created user
+   */
+  on(event: 'create', handler: (createdUser: User) => any) : this
+
+}
+
+export interface EventedRouter extends express.Router {
+  events: RouterEvents;
+}
 
 export default function initializeRouter(store: Store<User>) {
   const router = express.Router() as EventedRouter;

@@ -11,7 +11,7 @@
     "@raincatcher/store": "1.0.0"
   },
   "scripts": {
-    "prepublish": "del lib types && tsc && cp src/*.d.ts types/"
+    "prepublish": "del lib types && tsc"
   },
   "devDependencies": {
     "@types/express": "^4.0.35",

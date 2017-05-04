@@ -1,4 +1,4 @@
-import Store, { HasId } from '@raincatcher/store/types/Store';
+import { Store, HasId } from '@raincatcher/store';
 import * as redis from 'redis';
 import * as Promise from 'bluebird';
 import { randomBytes } from 'crypto';

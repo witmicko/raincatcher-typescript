@@ -11,11 +11,12 @@
     "@raincatcher/store": "1.0.0"
   },
   "scripts": {
-    "prepublish": "tsc && cp src/*.d.ts types/"
+    "prepublish": "del lib types && tsc && cp src/*.d.ts types/"
   },
   "devDependencies": {
     "@types/express": "^4.0.35",
     "@types/node": "^7.0.14",
+    "del-cli": "^0.2.1",
     "typescript": "^2.3.2"
   }
 }

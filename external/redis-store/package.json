@@ -13,9 +13,12 @@
   "devDependencies": {
     "@raincatcher/store": "1.0.0",
     "@types/bluebird": "^3.5.3",
-    "@types/redis": "^0.12.36"
+    "@types/redis": "^0.12.36",
+    "del-cli": "^0.2.1",
+    "typescript": "^2.3.2"
   },
   "scripts": {
-    "test": "node test.js"
+    "prepublish": "npm run build",
+    "build": "del lib types && tsc"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@external/nano-redis-store",
+  "name": "@external/reimplementing-store",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -8,17 +8,22 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.0",
-    "redis": "^2.7.1"
+    "lodash": "^4.17.4"
+  },
+  "scripts": {
+    "prepublish": "del lib types && tsc",
+    "test": "mocha"
   },
   "devDependencies": {
     "@raincatcher/store": "1.0.0",
     "@types/bluebird": "^3.5.3",
-    "@types/redis": "^0.12.36",
+    "@types/lodash": "^4.14.63",
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^7.0.15",
     "del-cli": "^0.2.1",
+    "mocha": "^3.3.0",
+    "source-map-support": "^0.4.15",
+    "ts-node": "^3.0.2",
     "typescript": "^2.3.2"
-  },
-  "scripts": {
-    "prepublish": "npm run build",
-    "build": "del lib types && tsc"
   }
 }

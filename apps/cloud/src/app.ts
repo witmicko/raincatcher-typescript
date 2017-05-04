@@ -6,10 +6,14 @@ import * as morgan from 'morgan';
 
 import userRouterBuilder, { User } from '@raincatcher/user';
 import Store from '@raincatcher/store';
+const userSeedData: User[] = require('./users.json');
+const userRouter = userRouterBuilder(new Store<User>(userSeedData));
+
+import messageRouterBuilder, { Message } from '@raincatcher/message';
+import ExternalStore from '@external/extending-store';
+const messageRouter = messageRouterBuilder(new ExternalStore<Message>());
 
 const app: express.Express = express();
-const seedData: User[] = require('./users.json');
-const userRouter = userRouterBuilder(new Store<User>(seedData));
 
 app.use(morgan('dev'));
 app.use(cors());
@@ -17,5 +21,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/users', userRouter);
+app.use('/messages', messageRouter);
 
 export default app;

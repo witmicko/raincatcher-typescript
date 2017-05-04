@@ -4,7 +4,7 @@ import { EventEmitter } from "events";
 /**
  * Events emmited by the router as stuff happens
  */
-export interface RouterEvents extends EventEmitter {
+interface RouterEvents extends EventEmitter {
   /**
    * List endpoint has been hit
    * @param listOfUsers The list of users

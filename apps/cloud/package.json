@@ -27,6 +27,7 @@
     "@types/morgan": "^1.7.32",
     "@types/node": "^7.0.16",
     "del-cli": "^0.2.1",
-    "ts-node": "^3.0.3"
+    "ts-node": "^3.0.3",
+    "typescript": "^2.3.2"
   }
 }

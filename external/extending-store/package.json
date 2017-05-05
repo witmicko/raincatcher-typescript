@@ -10,7 +10,7 @@
     "bluebird": "^3.5.0"
   },
   "scripts": {
-    "prepublish": "del lib types && tsc",
+    "prepublish": "del lib types && tsc"
   },
   "devDependencies": {
     "@raincatcher/store": "1.0.0",

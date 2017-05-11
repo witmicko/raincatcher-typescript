@@ -23,4 +23,8 @@ app.use(bodyParser.json());
 app.use('/users', userRouter);
 app.use('/messages', messageRouter);
 
+import taskRoute from "./api/task"
+
+app.use('/tasks', taskRoute);
+
 export default app;

@@ -15,11 +15,11 @@ export default function apiModule<T extends HasId>(store: Store<T>, config: WebA
   const router: express.Router = express.Router();
   const route = router.route('/');
   route.get(function (req, res) {
-    store.list().then(res.json.bind(res));
+    store.list().then(users => res.json(users));
   });
   route.post(function (req, res) {
     var userToCreate = req.body;
-    store.add(userToCreate).then(res.json.bind(res));
+    store.add(userToCreate).then(user => res.json(user));
   });
   return router;
 };

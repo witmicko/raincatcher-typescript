@@ -16,12 +16,22 @@ export interface Store<T extends HasId> {
   /**
    * Returns a list of all members of the store's data
    */
-  list(): Promise<T[]>;
+  list(): Promise<T[]>
+
+  // /**
+  //  * Returns a list of  members of the store's data filtered by condition
+  //  * 
+  //  * @param condition - condition used to filter things
+  //  * 
+  //  * NOTE Intentionally not breaking interface but providing new modified method. 
+  //  */ 
+  // list(condition?: Object): Promise<T[]>
+
   /**
    * Adds a new user to the store's data
    * @param user User to add
    */
-  add(user: T): Promise<T>;
+  add(user: T): Promise<T>
   /**
    * Reset's the store's data
    */

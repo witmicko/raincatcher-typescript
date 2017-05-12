@@ -1,15 +1,22 @@
 import * as express from 'express';
 import { Store, HasId } from '@raincatcher/store';
-import WebApiConfig from './config';
+
+/** WebApi Module configuration  */
+export interface WebApiConfig {
+    /**
+     * Enable results limits interface 
+     */
+    limits: boolean
+}
 
 /**
  * Raincatcher webapi service module
  * 
  * Create codeless API using express.js
  * 
- * @param {Store} store - storage implementation 
- * @param {WebApiConfig} config - module configuration
- * @return {express.Router} router that can be mounted in top level application
+ * @param store - storage implementation 
+ * @param config - module configuration
+ * @return router - router that can be mounted in top level application
  */
 export default function apiModule<T extends HasId>(store: Store<T>, config: WebApiConfig) {
   const router: express.Router = express.Router();

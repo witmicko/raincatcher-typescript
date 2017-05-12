@@ -4,7 +4,8 @@
 import * as express from 'express';
 import Store from '@raincatcher/store';
 // Express.js based out of the box api service
-import webapi, {WebApiConfig} from '@raincatcher/webapi';
+import webapi, {WebApiConfig, ApiService, StoreApiService}  from '@raincatcher/webapi';
+
 
 // Define new datatype
 interface Task {
@@ -26,6 +27,10 @@ const sampleTask: Task = {
 };
 
 let taskStore = new Store<Task>([sampleTask]);
-let taskRouter: express.Router = webapi(taskStore, config);
+// This example is simple but it shows alternative way for developers to extend module functionality.
+// Service by default wrapes store, but developers can extend store (or just particular methods)
+// To provide custome functionality additionally some different store can be injected into implementation.
+let taskService = new StoreApiService<Task>(taskStore);
+let taskRouter: express.Router = webapi(taskService, config);
 
 export default taskRouter;

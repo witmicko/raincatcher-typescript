@@ -16,6 +16,7 @@
     "@external/extending-store": "1.0.0",
     "@raincatcher/user": "0.0.1",
     "@raincatcher/message": "0.0.1",
+    "@raincatcher/webapi": "0.0.1",
     "body-parser": "^1.15.2",
     "cors": "2.7.1",
     "express": "^4.14.0",

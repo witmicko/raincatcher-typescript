@@ -18,7 +18,12 @@ class StoreImpl<T extends HasId> implements Store<T> {
   list() {
     sayHello('list');
     return Promise.resolve(this.data);
-  };
+  }
+
+  listWithCondition(condition: Object, limit: number) {
+    sayHello('listWithCondition');
+    return Promise.resolve(this.data);
+  }
 
   add(user: T) {
     sayHello('add');

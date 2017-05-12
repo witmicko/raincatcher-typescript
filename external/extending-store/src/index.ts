@@ -13,6 +13,11 @@ class StoreImpl<T extends HasId> extends RaincatcherStore<T> {
     return super.list() as Promise<T[]>;
   };
 
+  listWithCondition(condition: Object, limit: number) {
+    sayHello('listWithCondition');
+    return super.list() as Promise<T[]>;
+  };
+
   add(user: T) {
     sayHello('add');
     return super.add(user) as Promise<T>;

@@ -1,6 +1,6 @@
 import * as Promise from 'bluebird';
-import { cloneDeep } from 'lodash';
-
+import * as _ from 'lodash';
+ 
 /**
  * Extra optional interface to enforce constructor signature
  */
@@ -18,14 +18,14 @@ export interface Store<T extends HasId> {
    */
   list(): Promise<T[]>
 
-  // /**
-  //  * Returns a list of  members of the store's data filtered by condition
-  //  * 
-  //  * @param condition - condition used to filter things
-  //  * 
-  //  * NOTE Intentionally not breaking interface but providing new modified method. 
-  //  */ 
-  // list(condition?: Object): Promise<T[]>
+  /**
+   * Returns a list of  members of the store's data filtered by condition
+   * 
+   * @param condition - condition used to filter things
+   * @param limit - max number of entries to return
+   * NOTE Intentionally not breaking interface but providing new modified method. 
+   */ 
+  listWithCondition(condition: Object,  limit: number): Promise<T[]>
 
   /**
    * Adds a new user to the store's data
@@ -53,13 +53,21 @@ class StoreImpl<T extends HasId> implements Store<T> {
     return Promise.resolve(this.data);
   };
 
+  listWithCondition(condition: Object,  limit: number) {
+    let conditionsKeys = _.keys(condition);
+    let tmpData: T[] = _.filter(this.data, element => {
+      return _.isMatch(element,condition);
+    })
+    return Promise.resolve(_.take(tmpData,limit));
+  };
+
   add(user: T) {
     this.data.push(user);
     return Promise.resolve(user);
   };
 
   reset() {
-    this.data = cloneDeep(this.seedData);
+    this.data = _.cloneDeep(this.seedData);
     return this.list();
   }
 }

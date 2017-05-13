@@ -6,7 +6,6 @@ This repository using [Lerna](https://lernajs.io/ to manage independent node.js 
 
 ## How to run
 
-```
 npm install -g lerna
 
 ## Install dependencies
@@ -25,7 +24,7 @@ lerna run start --scope=@raincatcher/cloud
 ## Message create
 
         curl -H "Content-Type: application/json" -d '{ "userId": "trever", "content": "hello world" }' localhost:8001/messages
-
+        
 ## Tasks list
 
         curl localhost:8001/tasks?query=%7B%22id%3A%221%22%7D&limit=5

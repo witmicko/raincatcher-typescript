@@ -1,6 +1,7 @@
 import * as express from 'express';
 import { Store, HasId } from '@raincatcher/store';
 import * as Logger from "bunyan";
+import {ApiService, StoreApiService} from "./service";
 
 var log = Logger.createLogger({name: __filename, level:"debug"});
 
@@ -33,7 +34,7 @@ export function loggerMiddleware(req: any, res: any) {
  * @param config - module configuration
  * @return router - router that can be mounted in top level application
  */
-export default function apiModule<T extends HasId>(store: Store<T>, config: WebApiConfig) {
+export default function apiModule<T extends HasId>(store: ApiService<T>, config: WebApiConfig) {
   const router: express.Router = express.Router();
   const route = router.route('/');
   log.info("Creating new api mount", { config: config });
@@ -63,4 +64,5 @@ export default function apiModule<T extends HasId>(store: Store<T>, config: WebA
   return router;
 };
 
+export * from "./service";
  

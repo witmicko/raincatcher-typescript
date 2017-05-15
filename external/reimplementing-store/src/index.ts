@@ -15,25 +15,29 @@ class StoreImpl<T extends HasId> implements Store<T> {
     }
   };
 
-  list() {
+  public list() {
     sayHello('list');
     return Promise.resolve(this.data);
   }
 
-  listWithCondition(condition: Object, limit: number) {
+  public listWithCondition(condition: Object, limit: number) {
     sayHello('listWithCondition');
     return Promise.resolve(this.data);
   }
 
-  add(user: T) {
+  public add(user: T) {
     sayHello('add');
     this.data.push(user);
     return Promise.resolve(user);
   };
 
-  reset() {
+  public reset() {
     sayHello('reset');
-    this.data = cloneDeep(this.seedData);
+    if (this.seedData) {
+      this.data = cloneDeep(this.seedData);
+    } else {
+      this.data = [];
+    }
     return this.list();
   }
 }

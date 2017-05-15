@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A Cloud App to demonstrate bridging between client and cloud for the Raincatcher user module",
   "main": "lib/index.js",
-  "types": "types/index.d.ts",
+  "types": "src/index.ts",
   "scripts": {
     "build": "del lib types && tsc",
     "prepublish": "npm run build",

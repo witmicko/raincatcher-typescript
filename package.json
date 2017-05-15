@@ -8,7 +8,7 @@
     "url": "git+https://github.com/feedhenry-raincatcher/raincatcher-typescript.git"
   },
   "scripts": {
-    "docs":"typedoc -out ./docs ./packages/",
+    "docs": "typedoc -out ./docs ./packages/",
     "bootstrap": "lerna bootstrap"
   },
   "author": "",
@@ -21,6 +21,7 @@
     "@types/express": "^4.0.35",
     "lerna": "^2.0.0-rc.4",
     "tsc": "^1.20150623.0",
+    "tslint": "^5.2.0",
     "typedoc": "^0.6.0"
   }
 }

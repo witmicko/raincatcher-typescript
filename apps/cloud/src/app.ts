@@ -21,11 +21,9 @@ const app: express.Express = express();
 
 app.use(morgan('dev'));
 app.use(cors());
-// Using a body parser for JSON requests.
 app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser);
-//app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('public'));
 
 app.use('/users', userRouter);
 app.use('/messages', messageRouter);
@@ -36,8 +34,10 @@ app.use('/tasks', taskRoute);
 
 // Security spike
 import securityInit from "./passportSecurity";
-securityInit(app, userStore);
-app.use('/tasksSecured', passport.authenticate('local', { session: false }), taskRoute);
+var secMiddleware = securityInit(app, userStore);
+app.use('/apiSecured', secMiddleware, function (req, res) {
+    res.json({ message: "Authenticated response" })
+});
 
 
 app.use(function(req, res, next) {
@@ -49,7 +49,7 @@ let errHandler: express.ErrorRequestHandler;
 if (app.get('env') === 'development') {
     errHandler = function (err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error', {
+        res.json({
             message: err.message,
             error: err
         });
@@ -59,7 +59,7 @@ if (app.get('env') === 'development') {
     // no stacktraces leaked to user
     errHandler = function (err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error', {
+        res.json({
             message: err.message,
             error: {}
         });

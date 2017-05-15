@@ -28,3 +28,8 @@ lerna run start --scope=@raincatcher/cloud
 ## Tasks list
 
         curl localhost:8001/tasks?query=%7B%22id%3A%221%22%7D&limit=5
+
+
+## Authentication
+
+        curl -d "apikey=trever" localhost:8001/apiSecured

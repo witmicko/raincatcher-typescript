@@ -1,6 +1,6 @@
+import { HasId, Store } from '@raincatcher/store';
 import * as Promise from 'bluebird';
 import { cloneDeep } from 'lodash';
-import { Store, HasId } from '@raincatcher/store';
 const sayHello = ((from: string) => console.log(`Hello from reimplementing store's ${from}!`));
 
 class StoreImpl<T extends HasId> implements Store<T> {
@@ -13,7 +13,7 @@ class StoreImpl<T extends HasId> implements Store<T> {
     } else {
       this.data = [];
     }
-  };
+  }
 
   public list() {
     sayHello('list');
@@ -29,7 +29,7 @@ class StoreImpl<T extends HasId> implements Store<T> {
     sayHello('add');
     this.data.push(user);
     return Promise.resolve(user);
-  };
+  }
 
   public reset() {
     sayHello('reset');

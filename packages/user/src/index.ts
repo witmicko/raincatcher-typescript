@@ -18,10 +18,10 @@ export default function initializeRouter(store: Store<User>) {
   });
 
   route.post(function(req, res) {
-    let userToCreate = req.body;
+    const userToCreate = req.body;
     store.add(userToCreate)
       .then(res.json.bind(res));
   });
 
   return router;
-};
+}

@@ -1,7 +1,7 @@
 import * as http from 'http';
 import app from './app';
 
-let server = http.createServer(app);
+const server = http.createServer(app);
 server.listen(8001, 'localhost', function() {
   console.log(
 `App started at: ${new Date()} on port: 8001, use

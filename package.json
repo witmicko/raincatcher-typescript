@@ -9,7 +9,8 @@
   },
   "scripts": {
     "docs": "typedoc -out ./docs ./packages/",
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "lint": "tslint --fix '*/*/src/**/*.ts'"
   },
   "author": "",
   "license": "Apache",

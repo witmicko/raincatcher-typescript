@@ -47,27 +47,27 @@ class StoreImpl<T extends HasId> implements Store<T> {
     } else {
       this.data = [];
     }
-  };
+  }
 
   list() {
     return Promise.resolve(this.data);
-  };
+  }
 
   listWithCondition(condition: Object,  limit: number) {
-    let conditionsKeys = _.keys(condition);
-    let tmpData: T[] = _.filter(this.data, element => {
-      return _.isMatch(element,condition);
+    const conditionsKeys = _.keys(condition);
+    const tmpData: T[] = _.filter(this.data, (element) => {
+      return _.isMatch(element, condition);
     });
-    return Promise.resolve(_.take(tmpData,limit));
-  };
+    return Promise.resolve(_.take(tmpData, limit));
+  }
 
   add(user: T) {
     this.data.push(user);
     return Promise.resolve(user);
-  };
+  }
 
   reset() {
-    if(this.seedData) {
+    if (this.seedData) {
       this.data = _.cloneDeep(this.seedData);
     } else {
       this.data = [];

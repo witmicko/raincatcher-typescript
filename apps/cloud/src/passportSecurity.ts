@@ -9,7 +9,7 @@ import * as _ from 'lodash';
 import * as passport from 'passport';
 import * as passportLocal from 'passport-local';
 
-let LocalAPIKeyStrategy: any = require('passport-localapikey').Strategy;
+const LocalAPIKeyStrategy: any = require('passport-localapikey').Strategy;
 
 const LocalStrategy = passportLocal.Strategy;
 
@@ -22,10 +22,10 @@ export default function securityInit(app: express.Router, userStore: Store<User>
 }
 
 function passwordCheck(userStore: Store<User>): passportLocal.VerifyFunction {
-    return function (username, password, done) {
+    return function(username, password, done) {
         console.error('Password check for ', username);
-        userStore.list().then(function (users: User[]) {
-            let found = _.find(users, (user) => user.name === username);
+        userStore.list().then(function(users: User[]) {
+            const found = _.find(users, (user) => user.name === username);
             // TODO handle errors
             // TODO check password
             done(null, found);
@@ -40,8 +40,8 @@ function setupToken(app: express.Router, userStore: Store<User>): express.Handle
     app.use(cookieParser());
     function strategy(apikey: String, done: any) {
         console.error('Password check for ', apikey);
-        userStore.list().then(function (users: User[]) {
-            let found = _.find(users, (user) => user.name === apikey);
+        userStore.list().then(function(users: User[]) {
+            const found = _.find(users, (user) => user.name === apikey);
             // TODO handle errors
             // TODO check password
             done(null, found);
@@ -50,11 +50,9 @@ function setupToken(app: express.Router, userStore: Store<User>): express.Handle
 
     passport.use(new LocalAPIKeyStrategy(strategy));
     app.use(passport.initialize());
-    let passportAuth = passport.authenticate('localapikey', { session: false, failWithError: true });
+    const passportAuth = passport.authenticate('localapikey', { session: false, failWithError: true });
     return passportAuth;
 }
-
-
 
 /**
  * Setup session based authentication
@@ -66,13 +64,12 @@ function setupSession(app: express.Router, userStore: Store<User>) {
     app.use(passport.initialize());
     app.use(passport.session());
 
-
     // Session serialization
-    passport.serializeUser<User, string>(function (user, done) {
+    passport.serializeUser<User, string>(function(user, done) {
         done(null, user.id);
     });
 
-    passport.deserializeUser<User, string>(function (id, done) {
+    passport.deserializeUser<User, string>(function(id, done) {
         userStore.list().filter<User>((u) => u.id === id)
             .then(_.first)
             .then((u) => done(null, u))

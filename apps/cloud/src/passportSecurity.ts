@@ -1,15 +1,15 @@
-import * as express from 'express';
-import * as session from 'express-session'
+import Store from '@raincatcher/store';
+import userRouterBuilder, { User } from '@raincatcher/user';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as cors from 'cors';
-import * as passport from 'passport'
-import * as passportLocal from 'passport-local'
-import Store from '@raincatcher/store';
-import userRouterBuilder, { User } from '@raincatcher/user';
+import * as express from 'express';
+import * as session from 'express-session';
 import * as _ from 'lodash';
+import * as passport from 'passport';
+import * as passportLocal from 'passport-local';
 
-var LocalAPIKeyStrategy = require("passport-localapikey").Strategy;
+const LocalAPIKeyStrategy: any = require('passport-localapikey').Strategy;
 
 const LocalStrategy = passportLocal.Strategy;
 
@@ -18,19 +18,19 @@ const LocalStrategy = passportLocal.Strategy;
  */
 export default function securityInit(app: express.Router, userStore: Store<User>): express.Handler {
     return setupToken(app, userStore);
-    
+
 }
 
 function passwordCheck(userStore: Store<User>): passportLocal.VerifyFunction {
-    return function (username, password, done) {
-        console.error("Password check for ", username);
-        userStore.list().then(function (users: User[]) {
-            var found = _.find(users, user => user.name === username);
+    return function(username, password, done) {
+        console.error('Password check for ', username);
+        userStore.list().then(function(users: User[]) {
+            const found = _.find(users, (user) => user.name === username);
             // TODO handle errors
             // TODO check password
             done(null, found);
         }).catch(done);
-    }
+    };
 }
 
 /**
@@ -39,9 +39,9 @@ function passwordCheck(userStore: Store<User>): passportLocal.VerifyFunction {
 function setupToken(app: express.Router, userStore: Store<User>): express.Handler {
     app.use(cookieParser());
     function strategy(apikey: String, done: any) {
-        console.error("Password check for ", apikey);
-        userStore.list().then(function (users: User[]) {
-            var found = _.find(users, user => user.username === apikey);
+        console.error('Password check for ', apikey);
+        userStore.list().then(function(users: User[]) {
+            const found = _.find(users, (user) => user.name === apikey);
             // TODO handle errors
             // TODO check password
             done(null, found);
@@ -50,11 +50,9 @@ function setupToken(app: express.Router, userStore: Store<User>): express.Handle
 
     passport.use(new LocalAPIKeyStrategy(strategy));
     app.use(passport.initialize());
-    let passportAuth = passport.authenticate('localapikey', { session: false, failWithError: true });
+    const passportAuth = passport.authenticate('localapikey', { session: false, failWithError: true });
     return passportAuth;
 }
-   
-
 
 /**
  * Setup session based authentication
@@ -66,16 +64,15 @@ function setupSession(app: express.Router, userStore: Store<User>) {
     app.use(passport.initialize());
     app.use(passport.session());
 
-
     // Session serialization
-    passport.serializeUser<User, string>(function (user, done) {
+    passport.serializeUser<User, string>(function(user, done) {
         done(null, user.id);
     });
 
-    passport.deserializeUser<User, string>(function (id, done) {
-        userStore.list().filter<User>(u => u.id === id)
+    passport.deserializeUser<User, string>(function(id, done) {
+        userStore.list().filter<User>((u) => u.id === id)
             .then(_.first)
-            .then(u => done(null, u))
-            .catch(done)
+            .then((u) => done(null, u))
+            .catch(done);
     });
 }

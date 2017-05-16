@@ -41,7 +41,7 @@ export default function apiModule<T extends HasId>(service: ApiService<T>, confi
   route.get(function(req, res) {
     console.error('Using filter query', req.params.query);
     if (req.params.query) {
-      let query: Object;
+      let query: object;
       try {
         query = JSON.parse(req.params.query);
         log.error('TEST called', query);

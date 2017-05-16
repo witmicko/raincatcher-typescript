@@ -22,7 +22,7 @@ export class StoreApiService<T extends HasId> implements ApiService<T> {
     return this.store.list() as Promise<T[]>;
   }
 
-  public listWithCondition(condition: Object, limit: number) {
+  public listWithCondition(condition: object, limit: number) {
     log.info('Service list called', condition);
     return this.store.list() as Promise<T[]>;
   }

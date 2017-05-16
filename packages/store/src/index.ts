@@ -25,7 +25,7 @@ export interface Store<T extends HasId> {
    * @param limit - max number of entries to return
    * NOTE Intentionally not breaking interface but providing new modified method.
    */
-  listWithCondition(condition: Object,  limit: number): Promise<T[]>;
+  listWithCondition(condition: object,  limit: number): Promise<T[]>;
 
   /**
    * Adds a new user to the store's data
@@ -49,11 +49,11 @@ class StoreImpl<T extends HasId> implements Store<T> {
     }
   }
 
-  list() {
+  public list() {
     return Promise.resolve(this.data);
   }
 
-  listWithCondition(condition: Object,  limit: number) {
+  public listWithCondition(condition: object,  limit: number) {
     const conditionsKeys = _.keys(condition);
     const tmpData: T[] = _.filter(this.data, (element) => {
       return _.isMatch(element, condition);
@@ -61,12 +61,12 @@ class StoreImpl<T extends HasId> implements Store<T> {
     return Promise.resolve(_.take(tmpData, limit));
   }
 
-  add(user: T) {
+  public add(user: T) {
     this.data.push(user);
     return Promise.resolve(user);
   }
 
-  reset() {
+  public reset() {
     if (this.seedData) {
       this.data = _.cloneDeep(this.seedData);
     } else {

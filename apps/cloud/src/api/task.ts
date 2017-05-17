@@ -20,9 +20,9 @@ const config: WebApiConfig = {
 
 // Create sample data
 const sampleTask: Task = {
-    id: '1',
-    name: 'Make RainCatcher great again',
-    completed: false
+  completed: false,
+  id: '1',
+  name: 'Make RainCatcher great again'
 };
 
 const taskStore = new Store<Task>([sampleTask]);

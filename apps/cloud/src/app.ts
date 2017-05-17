@@ -31,6 +31,9 @@ app.use('/messages', messageRouter);
 import taskRoute from './api/task';
 app.use('/tasks', taskRoute);
 
+import seeFoodRoute from './api/see_food';
+app.use('/seefood', seeFoodRoute);
+
 // Security spike
 import securityInit from './passportSecurity';
 const secMiddleware = securityInit(app, userStore);

@@ -65,3 +65,5 @@ lib/
 
 # typedoc generated docs
 docs/
+.vscode/settings.json
+.vscode/tasks.json

@@ -3,11 +3,11 @@
 // Example proves that we do not need to have separate modules for simple datasets.
 import Store from '@raincatcher/store';
 // Express.js based out of the box api service
-import webapi, {ApiService, StoreApiService, WebApiConfig}  from '@raincatcher/webapi';
+import webapi, {ApiService, StoreApiService, WebApiConfig} from '@raincatcher/webapi';
 import * as express from 'express';
 
 // Define new datatype
-interface Task {
+export interface Task {
     id: string;
     name: string;
     completed: boolean;
@@ -19,7 +19,7 @@ const config: WebApiConfig = {
 };
 
 // Create sample data
-const sampleTask: Task = {
+export const sampleTask: Task = {
   completed: false,
   id: '1',
   name: 'Make RainCatcher great again'

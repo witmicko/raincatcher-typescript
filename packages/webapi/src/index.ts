@@ -34,7 +34,7 @@ export function loggerMiddleware(req: any, res: any) {
  * @param config - module configuration
  * @return router - router that can be mounted in top level application
  */
-export default function apiModule<T extends HasId>(service: ApiService<T>, config: WebApiConfig) {
+export default function apiModule<T extends HasId>(service: ApiService<T>, config?: WebApiConfig) {
   const router: express.Router = express.Router();
   const route = router.route('/');
   log.info('Creating new api mount', { config });
